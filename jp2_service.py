@@ -1,7 +1,7 @@
 import glymur
 import os
-from flask import Flask
-from flask import request, jsonify, abort
+from quart import Quart
+from quart import request, jsonify, abort
 import io
 from google.cloud import storage
 import time
@@ -19,9 +19,9 @@ def tempinput(data):
     finally:
         os.unlink(temp.name)
 
-app = Flask(__name__)
+app = Quart(__name__)
 
-def process_jp2(path, rlevel=-1):
+async def process_jp2(path, rlevel=-1):
     t0 = time.time()
     result = {}
     err = None
@@ -51,20 +51,20 @@ def process_jp2(path, rlevel=-1):
             return result, err
 
 @app.route('/')
-def index():
+async def index():
     return 'JP2 Service'
 
 @app.route("/api/jp2", methods=["POST"])
-def jp2():
+async def jp2():
     err = None
     try:
-        body = request.get_json()
+        body = await request.get_json()
         path = body["path"]
         rlevel = body["rlevel"]
     except:
         err = "Bad json"
         return jsonify({"Error": err})
-    res, err = process_jp2(path, rlevel)
+    res, err = await process_jp2(path, rlevel)
     if err != None:
         return jsonify({"Error": err})
     print(res["shape"])
