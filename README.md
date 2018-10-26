@@ -34,6 +34,14 @@ The service will return sth like:
 - **time_download** the time it took to download the image
 - **time_processing** the time it took to process the image
 
+### Example
+
+Using sample.json in `./data`:
+
+```
+curl -XPOST -d @sample.json http://35.227.24.82/api/jp2 --header "Content-Type: application/json"
+```
+
 ## Installation
 
 ### Requirements
