@@ -39,7 +39,7 @@ The service will return sth like:
 Using sample.json in `./data`:
 
 ```
-curl -XPOST -d @sample.json http://35.227.24.82/api/jp2 --header "Content-Type: application/json"
+curl -XPOST -d @sample.json http://IP-ADDRESS/api/jp2 --header "Content-Type: application/json"
 ```
 
 ## Installation
