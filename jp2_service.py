@@ -26,11 +26,7 @@ def process_jp2(path, rlevel=-1):
     result = {}
     err = None
     client = storage.Client()
-    # https://console.cloud.google.com/storage/browser/[bucket-id]/
     bucket = client.get_bucket('gcp-public-data-sentinel-2')
-    # blob = bucket.get_blob("tiles/33/U/UP/S2A_MSIL1C_20150711T100006_N0204_R122_T33UUP_20160812T055924.SAFE/GRANULE/S2A_OPER_MSI_L1C_TL_EPA__20160811T174848_A000262_T33UUP_N02.04/IMG_DATA/S2A_OPER_MSI_L1C_TL_EPA__20160811T174848_A000262_T33UUP_B8A.jp2")
-    # print(':'.join(hex(ord(x))[2:] for x in path))
-    # print(':'.join(hex(ord(x))[2:] for x in str(path)))
     blob = bucket.get_blob(path)
     if blob == None:
         err = "Image not found"
@@ -73,21 +69,6 @@ def jp2():
         return jsonify({"Error": err})
     print(res["shape"])
     return jsonify(res)
-
-
-def test_me():
-    client = storage.Client()
-    # https://console.cloud.google.com/storage/browser/[bucket-id]/
-    bucket = client.get_bucket('gcp-public-data-sentinel-2')
-    print(bucket)
-    # Then do other things...
-    blob = bucket.get_blob("tiles/33/U/UP/S2A_MSIL1C_20150711T100006_N0204_R122_T33UUP_20160812T055924.SAFE/GRANULE/S2A_OPER_MSI_L1C_TL_EPA__20160811T174848_A000262_T33UUP_N02.04/IMG_DATA/S2A_OPER_MSI_L1C_TL_EPA__20160811T174848_A000262_T33UUP_B8A.jp2")
-    img = blob.download_as_string()
-    res, err = process_jp2(img)
-    if err == None:
-        print(res)
-    else:
-        print(err)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
