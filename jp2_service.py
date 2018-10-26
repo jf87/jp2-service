@@ -54,7 +54,7 @@ def process_jp2(path, rlevel=-1):
             err = "Error parsing jp2"
             return result, err
 
-app.route('/')
+@app.route('/')
 def index():
     return 'JP2 Service'
 
@@ -88,3 +88,6 @@ def test_me():
         print(res)
     else:
         print(err)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")
