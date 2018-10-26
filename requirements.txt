@@ -1,4 +1,4 @@
 glymur
-flask
+quart
 google-cloud-storage
 gunicorn
