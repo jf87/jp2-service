@@ -9,12 +9,12 @@ http://IP-ADDRESS/api/jp2
 With a payload as follows:
 ```
 {
-  "Path": "tiles/33/U/UP/S2A_MSIL1C_20150711T100006_N0204_R122_T33UUP_20160812T055924.SAFE/GRANULE/S2A_OPER_MSI_L1C_TL_EPA__20160811T174848_A000262_T33UUP_N02.04/IMG_DATA/S2A_OPER_MSI_L1C_TL_EPA__20160811T174848_A000262_T33UUP_B8A.jp2",
+  "path": "tiles/33/U/UP/S2A_MSIL1C_20150711T100006_N0204_R122_T33UUP_20160812T055924.SAFE/GRANULE/S2A_OPER_MSI_L1C_TL_EPA__20160811T174848_A000262_T33UUP_N02.04/IMG_DATA/S2A_OPER_MSI_L1C_TL_EPA__20160811T174848_A000262_T33UUP_B8A.jp2",
   "rlevel": -1
 }
 ```
 
-- **Path** is the bucket path of the image that should be analysed.
+- **path** is the bucket path of the image that should be analysed.
 - **rlevel** can be used to decide on the resolution in which the image will be processed.
 `-1` will use the lowest resolution and thus be the fastest.
 
