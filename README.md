@@ -1,5 +1,10 @@
 # JPEG2000 Web Service
 
+## Server-Address
+
+35.227.24.82  
+--> replace in below URLs
+
 ## API
 
 This is a web service based on OpenJPEG that helps to analyse the content of JPEG2000 images from Sentinel.
